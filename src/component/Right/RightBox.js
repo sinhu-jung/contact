@@ -1,3 +1,5 @@
+import '../../assets/css/RightBox.css';
+
 const RightBox = ({clickItem}) => {
 
     return(

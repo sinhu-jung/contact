@@ -3,6 +3,7 @@ import LeftBox from "./Left/LeftBox.js";
 import RightBox from "./Right/RightBox.js";
 import AddContact from "./AddContact/AddContact";
 import update from 'react-addons-update';
+import "../assets/css/Box.css";
 
 const Box = () => {
     const [addContactButton, setAddContactButton] = useState(true)

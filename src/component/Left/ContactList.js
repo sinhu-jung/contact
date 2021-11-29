@@ -1,3 +1,4 @@
+import '../../assets/css/ContactList.css';
 import Contact from "./Contact";
 
 const ContactList = ({items, keyword, buttonHandler, selectNo}) => {

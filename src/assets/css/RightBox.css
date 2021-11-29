@@ -1,0 +1,38 @@
+.rightBox {
+    flex: 1 1 0%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font: inherit;
+  }
+
+  .notSelected{
+    flex: 1 1 0%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+
+  dl {
+    margin: 0;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    font: inherit;
+  }
+  
+  dt {
+    font-weight: bold;
+    padding: 5px;
+  }
+  
+  dd {
+    margin: 0;
+    font-weight: normal;
+    font: inherit;
+    padding: 5px;
+  }

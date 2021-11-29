@@ -1,3 +1,5 @@
+import '../../assets/css/WriteInformation.css';
+
 const WriteInformation = ({title, titleId, onChange}) => {
 
     return(

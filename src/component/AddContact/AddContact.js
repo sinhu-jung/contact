@@ -1,3 +1,4 @@
+import '../../assets/css/AddContact.css';
 import { useState } from "react";
 import WriteInformation from "./WriteInformation";
 

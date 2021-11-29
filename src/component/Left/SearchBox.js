@@ -1,3 +1,5 @@
+import '../../assets/css/SearchBox.css';
+
 const SearchBox = ({onChange}) => {
     return(
         <div className="searchBox">

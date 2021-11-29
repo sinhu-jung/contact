@@ -1,3 +1,4 @@
+import '../../assets/css/LeftBox.css';
 import SearchBox from "./SearchBox";
 import ContactList from "./ContactList";
 import { useState } from "react";

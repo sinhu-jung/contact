@@ -1,3 +1,5 @@
+import '../../assets/css/Contact.css';
+
 const Contact = ({no, name, phoneNumber, buttonHandler, selectNo}) => {
     
     return(
