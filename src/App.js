@@ -1,8 +1,12 @@
-import "./App.scss";
+import "./assets/css/App.css";
+import Box from './component/Box.js'
 
-function App() {
+const App = () => {
   return (
-    <h1>Hello!</h1>
+    <div className="main">
+      <h1 className="title">Unit6 연락처</h1>
+      <Box />
+    </div>
   );
 }
 
