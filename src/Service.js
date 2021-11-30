@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:4000/contacts'
+const baseURL = 'https://sinhu-contacts-server.herokuapp.com/contacts'
 
 class service {
   getAll(){
