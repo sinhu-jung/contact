@@ -1,11 +1,11 @@
 import '../../assets/css/Contact.css';
 
-const Contact = ({no, name, phoneNumber, buttonHandler, selectNo}) => {
+const Contact = ({id, name, phoneNumber, buttonHandler, selectId}) => {
     
     return(
-        <li className={no === selectNo ? "itemSelected" : "item"}>
-            <button className={no === selectNo ? "contactSelect" : "contactNotSelect"} 
-                               onClick={() => buttonHandler.select(no)}>
+        <li className={id === selectId ? "itemSelected" : "item"}>
+            <button className={id === selectId ? "contactSelect" : "contactNotSelect"} 
+                               onClick={() => buttonHandler.select(id)}>
                 <div style={{padding:'5px'}}>{name}</div>
                 <div style={{padding:'5px'}}>{phoneNumber}</div>
             </button>

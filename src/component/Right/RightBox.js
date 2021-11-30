@@ -26,7 +26,7 @@ const RightBox = ({clickItem}) => {
                 </dl>
                 <dl>
                     <dt>설명</dt>
-                    <dd>{clickItem.explain}</dd>
+                    <dd>{clickItem.description}</dd>
                 </dl>
             </>
         }

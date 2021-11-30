@@ -1,36 +1,46 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import LeftBox from "./Left/LeftBox.js";
 import RightBox from "./Right/RightBox.js";
 import AddContact from "./AddContact/AddContact";
 import update from 'react-addons-update';
+import Service from "../Service.js";
 import "../assets/css/Box.css";
 
 const Box = () => {
     const [addContactButton, setAddContactButton] = useState(true)
     const [items, setItems] = useState([]);
-    const [selectNo, setSelectNo] = useState(null);
-    const selectIndex = items.findIndex((item) => item.no === selectNo);
+    const [selectId, setSelectId] = useState(null);
+    const selectIndex = items.findIndex((item) => item.id === selectId);
+
+    useEffect(() => {
+        Service.getAll()
+               .then(res => setItems(res.data))
+               .catch(err => console.log('getAll error: ', err));
+    }, [])
 
     const buttonHandler = {
         toggle: function(){
             setAddContactButton(true);
         },
-        select: function(selectNo){
-            setSelectNo(selectNo);
+        select: function(selectId){
+            setSelectId(selectId);
         },
         plus: function(data){
             const item = {
-                no: data.no++,
                 name: data.name,
                 phoneNumber: data.phoneNumber,
-                age: data.age,
+                age: parseInt(data.age),
                 email: data.email,
-                explain: data.explain
+                description: data.description
             }
-            setItems([...items, item]);
+
+            Service.create(item)
+                   .then(res => setItems([...items, res.data]))
+                   .catch(err => console.log('getAll error: ', err));
         },
         delete: function(){
-            setItems(update(items, {$splice: [[selectIndex, 1]]}));
+            Service.delete(selectId).then(res => setItems(update(items, {$splice: [[selectIndex, 1]]})))
+                   .catch(err => console.log('getAll error: ', err));
         }
     }
 
@@ -40,7 +50,7 @@ const Box = () => {
                 addContactButton ? 
                 (
                     <>
-                        <LeftBox items={items} buttonHandler={buttonHandler} selectNo={selectNo}/>
+                        <LeftBox items={items} buttonHandler={buttonHandler} selectId={selectId}/>
                         <RightBox clickItem={items[selectIndex]}/>
                         <button className="plusButton" onClick={() => setAddContactButton(false)}>+</button>
                         <button className="minusButton" 
