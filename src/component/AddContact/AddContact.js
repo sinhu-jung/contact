@@ -5,7 +5,7 @@ import WriteInformation from "./WriteInformation";
 const item = {
     name: "",
     phoneNumber:"",
-    age: "",
+    age: null,
     email:"",
     description:""
 }
@@ -18,7 +18,7 @@ const AddContact = (props) => {
         props.buttonHandler.toggle();
         item.name = "";
         item.phoneNumber ="";
-        item.age = "";
+        item.age = null;
         item.email = "";
         item.description = "";
         setCheck(true);

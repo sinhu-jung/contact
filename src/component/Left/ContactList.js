@@ -7,7 +7,7 @@ const ContactList = ({items, keyword, buttonHandler, selectId}) => {
         <ul className="items">
             {items.filter(item => item.name.indexOf(keyword) !== -1 || 
                                   item.phoneNumber.indexOf(keyword) !== -1 ||
-                                  item.age.indexOf(keyword) !== -1 ||
+                                  (item.age + "").indexOf(keyword) !== -1 ||
                                   item.email.indexOf(keyword) !== -1 ||
                                   item.description.indexOf(keyword) !== -1 || '')
                   .map(item => <Contact 

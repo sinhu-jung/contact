@@ -29,7 +29,7 @@ const Box = () => {
             const item = {
                 name: data.name,
                 phoneNumber: data.phoneNumber,
-                age: parseInt(data.age),
+                age: Number(data.age),
                 email: data.email,
                 description: data.description
             }
