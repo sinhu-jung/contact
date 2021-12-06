@@ -2,7 +2,7 @@ import '../../assets/css/AddContact.css';
 import { useState } from "react";
 import WriteInformation from "./WriteInformation";
 
-const item = {
+const info = {
     name: "",
     phoneNumber:"",
     age: null,
@@ -12,21 +12,18 @@ const item = {
 
 const AddContact = (props) => {
     const [check, setCheck] = useState(true);
+    const [item, setItem] = useState(info);
 
     const okButtonClick = () => {
         props.buttonHandler.plus(item);
         props.buttonHandler.toggle();
-        item.name = "";
-        item.phoneNumber ="";
-        item.age = null;
-        item.email = "";
-        item.description = "";
+        setItem(info)
         setCheck(true);
     }
 
     const onChange = (titleId, data) => {
-        item[titleId] = data;
-        item.name !== "" && item.phoneNumber !== "" && item.age !== "" && item.email !== "" && item.description !== "" ? 
+        setItem({...item, [titleId] : data})
+        item.name && item.phoneNumber && item.age && item.email && item.description ? 
         setCheck(false) : setCheck(true);
     }
     
