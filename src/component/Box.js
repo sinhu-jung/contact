@@ -36,11 +36,11 @@ const Box = () => {
 
             Service.create(item)
                    .then(res => setItems([...items, res.data]))
-                   .catch(err => console.log('getAll error: ', err));
+                   .catch(err => console.log('create error: ', err));
         },
         delete: function(){
             Service.delete(selectId).then(res => setItems(update(items, {$splice: [[selectIndex, 1]]})))
-                   .catch(err => console.log('getAll error: ', err));
+                   .catch(err => console.log('delete error: ', err));
         }
     }
 
