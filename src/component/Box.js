@@ -66,7 +66,7 @@ const Box = () => {
                 (
                     <>
                         <LeftBox items={items} buttonHandler={buttonHandler} selectId={selectId}/>
-                        <RightBox clickItem={items[selectIndex]}/>
+                        <RightBox selectedItem={items[selectIndex]}/>
                         <button className="plusButton" onClick={() => setAddContactButton(false)}>+</button>
                         <button className="minusButton" 
                                 disabled={selectIndex >= 0 ? false : true}

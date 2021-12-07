@@ -8,7 +8,7 @@ const LeftBox = ({items, buttonHandler, selectId}) => {
 
     return(
         <div className="leftBox">
-            <SearchBox onChange={(info) => setKeyword(info)}/>
+            <SearchBox onChange={(data) => setKeyword(data)}/>
             <ContactList items={items} keyword={keyword} 
                          buttonHandler={buttonHandler} selectId={selectId} />
         </div>
