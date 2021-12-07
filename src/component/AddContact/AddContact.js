@@ -10,6 +10,14 @@ const info = {
     description:""
 }
 
+const title = {
+    "이름" : "name",
+    "전화번호" : "phoneNumber",
+    "나이" : "age",
+    "email" : "email",
+    "설명" : "description"
+}
+
 const AddContact = (props) => {
     const [item, setItem] = useState(info);
 
@@ -27,11 +35,9 @@ const AddContact = (props) => {
         <div className="addContact">
             <h1>연락처를 등록하세요</h1>
             <div>
-                <WriteInformation title={"이름"} titleId={"name"} onChange={onChange } />
-                <WriteInformation title={"전화번호"} titleId={"phoneNumber"} onChange={onChange } />
-                <WriteInformation title={"나이"} titleId={"age"} onChange={onChange } />
-                <WriteInformation title={"email"} titleId={"email"} onChange={onChange } />
-                <WriteInformation title={"설명"} titleId={"description"} onChange={onChange } />
+                {
+                    Object.keys(title).map((key, index) => <WriteInformation key={index} title={key} titleId={title[key]} onChange={onChange } />)
+                }
                 <button className="ok" onClick={okButtonClick} disabled={item.name && 
                                                                          item.phoneNumber && 
                                                                          item.age && 
