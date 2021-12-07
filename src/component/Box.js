@@ -12,20 +12,27 @@ const Box = () => {
     const [selectId, setSelectId] = useState(null);
     const selectIndex = items.findIndex((item) => item.id === selectId);
 
+    const getAll = async () => {
+        try {
+            const result =  await Service.getAll()
+            setItems(result.data);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     useEffect(() => {
-        Service.getAll()
-               .then(res => setItems(res.data))
-               .catch(err => console.log('getAll error: ', err));
+        getAll();
     }, [])
 
     const buttonHandler = {
-        toggle: function(){
+        toggle: () => {
             setAddContactButton(true);
         },
-        select: function(selectId){
+        select: (selectId) => {
             setSelectId(selectId);
         },
-        plus: function(data){
+        plus: async (data) => {
             const item = {
                 name: data.name,
                 phoneNumber: data.phoneNumber,
@@ -34,13 +41,21 @@ const Box = () => {
                 description: data.description
             }
 
-            Service.create(item)
-                   .then(res => setItems([...items, res.data]))
-                   .catch(err => console.log('create error: ', err));
+            try {
+                const response = await Service.create(item);
+                setItems([...items, response.data]);
+            } catch(err){
+                console.error(err);
+            }
         },
-        delete: function(){
-            Service.delete(selectId).then(res => setItems(update(items, {$splice: [[selectIndex, 1]]})))
-                   .catch(err => console.log('delete error: ', err));
+        delete: async () => {
+            try{
+                const response = await Service.delete(selectId)
+                if (response.status === 200) 
+                    setItems(update(items, {$splice: [[selectIndex, 1]]}));
+            }catch(err){
+                console.error(err);
+            }
         }
     }
 
