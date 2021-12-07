@@ -3,14 +3,17 @@ import Contact from "./Contact";
 
 const ContactList = ({items, keyword, buttonHandler, selectId}) => {
 
+    const filteredContacts = items.filter(item => {
+        return Object.keys(item).map((key) => {
+            if(key.id === 'id') return false; // id 제외
+            return (item[key]).toString().includes(keyword);
+        }).includes(true);
+    })
+
     return(
         <ul className="items">
-            {items.filter(item => item.name.indexOf(keyword) !== -1 || 
-                                  item.phoneNumber.indexOf(keyword) !== -1 ||
-                                  (item.age + "").indexOf(keyword) !== -1 ||
-                                  item.email.indexOf(keyword) !== -1 ||
-                                  item.description.indexOf(keyword) !== -1 || '')
-                  .map(item => <Contact 
+            {
+                filteredContacts.map(item => <Contact 
                                     key={item.id}
                                     id={item.id}
                                     name={item.name}
