@@ -3,14 +3,14 @@ import SearchBox from "./SearchBox";
 import ContactList from "./ContactList";
 import { useState } from "react";
 
-const LeftBox = ({items, buttonHandler, selectId}) => {
+const LeftBox = ({items, setSelectId, selectId}) => {
     const [keyword, setKeyword] = useState('');
 
     return(
         <div className="leftBox">
             <SearchBox onChange={(data) => setKeyword(data)}/>
             <ContactList items={items} keyword={keyword} 
-                         buttonHandler={buttonHandler} selectId={selectId} />
+                         setSelectId={setSelectId} selectId={selectId} />
         </div>
     );
 }

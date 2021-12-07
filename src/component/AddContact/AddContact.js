@@ -15,7 +15,7 @@ const AddContact = (props) => {
 
     const okButtonClick = () => {
         props.buttonHandler.plus(item);
-        props.buttonHandler.toggle();
+        props.changeBox(true);
         setItem(info)
     }
 
@@ -37,7 +37,7 @@ const AddContact = (props) => {
                                                                          item.age && 
                                                                          item.email && 
                                                                          item.description ? false : true }>확인</button>
-                <button className="cancel" onClick={() => props.buttonHandler.toggle()}>취소</button>
+                <button className="cancel" onClick={() => props.changeBox(true)}>취소</button>
             </div>
         </div>
     );

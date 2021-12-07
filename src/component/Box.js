@@ -7,7 +7,7 @@ import Service from "../Service.js";
 import "../assets/css/Box.css";
 
 const Box = () => {
-    const [addContactButton, setAddContactButton] = useState(true)
+    const [changeBox, setChangeBox] = useState(true)
     const [items, setItems] = useState([]);
     const [selectId, setSelectId] = useState(null);
     const selectIndex = items.findIndex((item) => item.id === selectId);
@@ -26,12 +26,6 @@ const Box = () => {
     }, [])
 
     const buttonHandler = {
-        toggle: () => {
-            setAddContactButton(true);
-        },
-        select: (selectId) => {
-            setSelectId(selectId);
-        },
         plus: async (data) => {
             const item = {
                 name: data.name,
@@ -62,17 +56,17 @@ const Box = () => {
     return(
         <div className="box">
             {   
-                addContactButton ? 
+                changeBox ? 
                 (
                     <>
-                        <LeftBox items={items} buttonHandler={buttonHandler} selectId={selectId}/>
+                        <LeftBox items={items} setSelectId={setSelectId} selectId={selectId}/>
                         <RightBox selectedItem={items[selectIndex]}/>
-                        <button className="plusButton" onClick={() => setAddContactButton(false)}>+</button>
+                        <button className="plusButton" onClick={() => setChangeBox(false)}>+</button>
                         <button className="minusButton" 
                                 disabled={selectIndex >= 0 ? false : true}
                                 onClick={buttonHandler.delete}>-</button>
                     </>
-                ) : <AddContact buttonHandler={buttonHandler } />
+                ) : <AddContact buttonHandler={buttonHandler } changeBox={setChangeBox} />
             }
         </div>
     );
